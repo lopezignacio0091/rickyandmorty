@@ -8,7 +8,7 @@ import {
 import SectionElement from "pages/home/components/Sections/components/SectionElement/SectionElement";
 import Episode from "pages/home/components/Sections/components/Episode/Episode";
 import { Character } from "redux/characters/types";
-import styles from './styles.module.scss'
+import styles from "./styles.module.scss";
 
 const Home = () => {
   const characters_one = useSelector(character_one_Selector);
@@ -48,17 +48,22 @@ const Home = () => {
         </Grid>
         <Divider orientation="horizontal" />
       </Grid>
-      <Grid container mt={3} spacing={1} className={styles.container}>
-        <Grid item md={4} xs={12}>
-          <Episode title="Character #1-Only Episodes" elements={list_one} />
+      {list_two.length > 0 && list_one.length > 0 && (
+        <Grid container mt={3} spacing={1} className={styles.container}>
+          <Grid item md={4} xs={12}>
+            <Episode title="Character #1-Only Episodes" elements={list_one} />
+          </Grid>
+          <Grid item md={4} xs={12}>
+            <Episode
+              title="Character #1 #2-Only Episodes"
+              elements={list_three}
+            />
+          </Grid>
+          <Grid item md={4} xs={12}>
+            <Episode title="Character #2-Only Episodes" elements={list_two} />
+          </Grid>
         </Grid>
-        <Grid item md={4} xs={12}>
-          <Episode title="Character #1 #2-Only Episodes" elements={list_three} />
-        </Grid>
-        <Grid item md={4} xs={12}>
-          <Episode title="Character #2-Only Episodes" elements={list_two} />
-        </Grid>
-      </Grid>
+      )}
     </Fragment>
   );
 };
